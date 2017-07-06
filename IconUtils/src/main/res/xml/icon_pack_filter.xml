@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- For Nova -->
+    <intent_filter action="android.intent.action.MAIN" category="com.teslacoilsw.launcher.THEME"/>
+
+    <!-- For Apex -->
+    <intent_filter action="android.intent.action.MAIN" category="com.anddoes.launcher.THEME"/>
+
+    <!-- For ADW -->
+    <intent_filter action="org.adw.launcher.THEMES" category="android.intent.category.DEFAULT"/>
+
+    <!-- For Xperia Home -->
+    <intent_filter action="com.sonymobile.home.ICON_PACK" category="android.intent.category.DEFAULT"/>
+
+</resources>

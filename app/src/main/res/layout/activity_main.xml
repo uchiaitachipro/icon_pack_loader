@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2196E3"
+    tools:context="loadiconpack.mimikko.droid.MainActivity">
+
+    <Button
+        android:id="@+id/pixel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PIXEL"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <Button
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:text="LINE"
+        app:layout_constraintLeft_toRightOf="@+id/pixel"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <Button
+        android:id="@+id/funny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-14dp"
+        android:text="FINNY"
+        app:layout_constraintLeft_toRightOf="@+id/line"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <Button
+        android:id="@+id/icon_pack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="Icon Pack"
+        app:layout_constraintLeft_toRightOf="@+id/funny"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="365dp"
+        android:layout_height="597dp"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="-160dp" />
+
+</android.support.constraint.ConstraintLayout>
