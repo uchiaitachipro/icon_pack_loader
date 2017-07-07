@@ -23,7 +23,7 @@ public class AppFilterReader {
     private String mPackageName;
     private static AppFilterReader reader;
     private boolean isReadDone = false;
-    private Map<String,IconPackBean> mAppFilterConfigMap;
+    private Map<String, IconPackBean> mAppFilterConfigMap;
 
     public Map<String, IconPackBean> getmAppFilterConfigMap() {
         return mAppFilterConfigMap;
@@ -34,11 +34,11 @@ public class AppFilterReader {
     }
 
     private AppFilterReader(Resources resources, String packageName) {
-        mPackageName = packageName;
         mAppFilterConfigMap = new HashMap<>();
+        load(resources,packageName);
     }
 
-    private boolean init(Resources resources) {
+    protected boolean init(Resources resources) {
         if (isReadDone()) {
             return true;
         }
@@ -46,12 +46,12 @@ public class AppFilterReader {
             return false;
         }
 
-        if(mPackageName == null){
+        if (mPackageName == null) {
             return false;
         }
 
         int resId = resources.getIdentifier(IconPackConfig.APPFIlTER,
-                IconPackConfig.APPFILTERLOCATION,mPackageName);
+                IconPackConfig.APPFILTERLOCATION, mPackageName);
 
 
         XmlResourceParser parser = resources.getXml(resId);
@@ -74,7 +74,7 @@ public class AppFilterReader {
                     } else {
                         bean.drawableNoSeq = bean.drawable;
                     }
-                    String component = parser.getAttributeValue(null,IconPackConfig.APPFILTERCOMPONENTELEMENT);
+                    String component = parser.getAttributeValue(null, IconPackConfig.APPFILTERCOMPONENTELEMENT);
                     if (component == null) {
                         event = parser.next();
                         continue;
@@ -85,8 +85,8 @@ public class AppFilterReader {
                         bean.launcher = matcher.group(2);
                     }
 
-                    if(!TextUtils.isEmpty(bean.launcher)){
-                        mAppFilterConfigMap.put(bean.launcher,bean);
+                    if (!TextUtils.isEmpty(bean.launcher)) {
+                        mAppFilterConfigMap.put(bean.launcher, bean);
                     }
                 }
                 event = parser.next();
@@ -100,22 +100,24 @@ public class AppFilterReader {
         return false;
     }
 
-    public void load(Resources resources,String packageName){
-        isReadDone = false;
-        mPackageName = packageName;
-        mAppFilterConfigMap.clear();
-        init(resources);
+    public void load(Resources resources, String packageName) {
+        if(packageName != mPackageName ){
+            isReadDone = false;
+            mPackageName = packageName;
+            mAppFilterConfigMap.clear();
+            init(resources);
+        }
     }
 
-    public boolean isReadDone() {
+    protected boolean isReadDone() {
         return isReadDone;
     }
 
-    public static AppFilterReader getInstance(Resources resources,String packageName) {
+    public static AppFilterReader getInstance(Resources resources, String packageName) {
         if (reader == null) {
             synchronized (AppFilterReader.class) {
                 if (reader == null) {
-                    reader = new AppFilterReader(resources,packageName);
+                    reader = new AppFilterReader(resources, packageName);
                 }
             }
         }

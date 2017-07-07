@@ -25,17 +25,17 @@ public class IconPackFilterReader {
 
     private boolean mDone = false;
 
-    private List<Intent>  mFilter ;
+    private List<Intent> mFilter;
 
     private static IconPackFilterReader mReader;
 
-    private IconPackFilterReader(Resources resources){
+    private IconPackFilterReader(Resources resources) {
         mFilter = new LinkedList<>();
         init(resources);
     }
 
 
-    private boolean init(Resources resources){
+    protected boolean init(Resources resources) {
         if (isReadDone()) {
             return true;
         }
@@ -80,11 +80,11 @@ public class IconPackFilterReader {
         return false;
     }
 
-    protected int getFilterConfigId(){
+    protected int getFilterConfigId() {
         return getFilterConfigId(R.xml.icon_pack_filter);
     }
 
-    protected int getFilterConfigId(int resId){
+    protected int getFilterConfigId(int resId) {
         return resId;
     }
 
@@ -96,9 +96,10 @@ public class IconPackFilterReader {
         this.mFilter = mFilter;
     }
 
-    public boolean isReadDone(){
-        return  mDone;
+    protected boolean isReadDone() {
+        return mDone;
     }
+
     public static IconPackFilterReader getInstance(Resources resources) {
         if (mReader == null) {
             synchronized (AppFilterReader.class) {

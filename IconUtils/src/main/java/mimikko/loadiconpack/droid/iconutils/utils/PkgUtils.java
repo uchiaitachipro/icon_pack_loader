@@ -93,19 +93,18 @@ public class PkgUtils {
             return pkgNameList;
         }
 
-            for (Intent i :filter)
-            {
-                if(i == null) continue;
-                List<ResolveInfo> list = null;
-                try {
-                    list = context.getPackageManager().queryIntentActivities(i,0);
-                } finally {
-                    for (ResolveInfo r : list){
-                        pkgNameList.add(r.activityInfo.packageName);
-                    }
+        for (Intent i : filter) {
+            if (i == null) continue;
+            List<ResolveInfo> list = null;
+            try {
+                list = context.getPackageManager().queryIntentActivities(i, 0);
+            } finally {
+                for (ResolveInfo r : list) {
+                    pkgNameList.add(r.activityInfo.packageName);
                 }
-
             }
+
+        }
 
         return pkgNameList;
     }
@@ -261,7 +260,7 @@ public class PkgUtils {
      * Get launcher icon
      */
     public static Drawable getIcon(PackageManager pkgManager, String pkgName) {
-        if (pkgManager  == null || TextUtils.isEmpty(pkgName)) {
+        if (pkgManager == null || TextUtils.isEmpty(pkgName)) {
             return null;
         }
 
@@ -279,7 +278,7 @@ public class PkgUtils {
      * Get Activity icon
      */
     public static Drawable getIcon(PackageManager pkgManager, String pkgName, String activity) {
-        if (pkgManager  == null || TextUtils.isEmpty(pkgName) || TextUtils.isEmpty(activity)) {
+        if (pkgManager == null || TextUtils.isEmpty(pkgName) || TextUtils.isEmpty(activity)) {
             return null;
         }
 
