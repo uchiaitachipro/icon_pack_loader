@@ -20,7 +20,7 @@ import mimikko.loadiconpack.droid.iconutils.beans.IconPackBean;
 
 public class AppFilterReader {
 
-    private final  String mPackageName;
+    private String mPackageName;
     private static AppFilterReader reader;
     private boolean isReadDone = false;
     private Map<String,IconPackBean> mAppFilterConfigMap;
@@ -36,7 +36,6 @@ public class AppFilterReader {
     private AppFilterReader(Resources resources, String packageName) {
         mPackageName = packageName;
         mAppFilterConfigMap = new HashMap<>();
-        init(resources);
     }
 
     private boolean init(Resources resources) {
@@ -99,6 +98,13 @@ public class AppFilterReader {
         }
 
         return false;
+    }
+
+    public void load(Resources resources,String packageName){
+        isReadDone = false;
+        mPackageName = packageName;
+        mAppFilterConfigMap.clear();
+        init(resources);
     }
 
     public boolean isReadDone() {

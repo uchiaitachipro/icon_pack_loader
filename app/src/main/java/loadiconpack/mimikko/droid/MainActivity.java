@@ -1,6 +1,5 @@
 package loadiconpack.mimikko.droid;
 
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,15 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import mimikko.loadiconpack.droid.iconutils.IconPackLoadManager;
-import mimikko.loadiconpack.droid.iconutils.beans.IconPackBean;
-import mimikko.loadiconpack.droid.iconutils.utils.PkgUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 mListView.setAdapter(new IconPackAdapter(listData, MainActivity.this));
             }
         });
+
+
 
     }
 

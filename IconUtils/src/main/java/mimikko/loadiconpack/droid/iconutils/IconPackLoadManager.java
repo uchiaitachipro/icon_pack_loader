@@ -101,6 +101,7 @@ public class IconPackLoadManager {
         if(mAppFilterReader == null){
             mAppFilterReader = AppFilterReader.getInstance(r,packageName);
         }
+        mAppFilterReader.load(r,packageName);
         return mAppFilterReader.getmAppFilterConfigMap();
     }
 
@@ -155,7 +156,7 @@ public class IconPackLoadManager {
         return PkgUtils.getInstalledIconPackPkgs(context,i);
     }
 
-    public void Recycle(){
+    public void recycle(){
         mAppFilterReader.setmAppFilterConfigMap(null);
         mIconPackFilterReader.setmFilters(null);
         mPackageManager = null;
